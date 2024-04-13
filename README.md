@@ -1,6 +1,8 @@
 # Link Preview App
 
-The Link Preview App is a Flutter application that enables users to fetch metadata from a provided URL and display it as a preview. The app consists of two screens: the first screen prompts users to enter a title and a link, while the second screen shows the fetched metadata.
+The Link Preview App is a Flutter application that enables users to fetch metadata from a provided URL and display it as a preview. 
+
+The app consists of two screens: the first screen prompts users to enter a title and a link, while the second screen shows the fetched metadata.
 
 I made this app as a task assigned by Probtosoft Technologies.
 
@@ -30,5 +32,7 @@ Two-Screen Interface: Navigate between a screen for inputting title and link and
 
 # Dependencies
 The Link Preview App utilizes the following dependencies:
+
 any_link_preview: A Dart package for fetching metadata from URLs and displaying link previews.
+
 https://pub.dev/packages/any_link_preview
