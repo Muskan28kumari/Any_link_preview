@@ -8,6 +8,7 @@ I made this app as a task assigned by Probtosoft Technologies.
 
 # Features
 Link Preview: Fetch metadata (title, description, image) from a URL and display it as a preview.
+
 Two-Screen Interface: Navigate between a screen for inputting title and link and a screen for displaying the link preview.
 
 # Screenshots
