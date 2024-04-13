@@ -27,7 +27,8 @@ class _SearchPageState extends State<SearchPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'TestingURL',
+              'Link Preview App',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             ElevatedButton(
               onPressed: () {},
@@ -38,7 +39,16 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: Column(
         children: [
-          Text('Add URL'),
+          SizedBox(
+            height: 30,
+          ),
+          Text(
+            'Add URL',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -65,13 +75,62 @@ class _SearchPageState extends State<SearchPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(onPressed: () {}, child: Text('Cancel')),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        Preview_Screen(title: _title.text, link: _link.text),
-                  ));
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Confirm Cancel'),
+                        content: Text('Are you sure you want to cancel?'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('No'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              _title.clear();
+                              _link.clear();
+                            },
+                            child: Text('Yes'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (_title.text.isEmpty || _link.text.isEmpty) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Missing Information'),
+                          content: Text('Please enter title and link.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          Preview_Screen(title: _title.text, link: _link.text),
+                    ));
+                  }
                 },
                 child: Text('Submit'),
               ),
